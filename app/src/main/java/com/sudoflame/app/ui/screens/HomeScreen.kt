@@ -90,7 +90,7 @@ fun HomeScreen(
         while (true) {
             val now = LocalDateTime.now()
             val d = Duration.between(now, now.toLocalDate().plusDays(1).atStartOfDay())
-            left = "${d.toHours()} sa ${d.toMinutesPart()} dk"
+            left = "${d.toHours()} sa ${d.toMinutes() % 60} dk"
             delay(30_000)
         }
     }
