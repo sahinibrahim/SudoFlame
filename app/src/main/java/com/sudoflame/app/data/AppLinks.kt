@@ -2,11 +2,12 @@ package com.sudoflame.app.data
 
 import android.content.Context
 
-/** Yayından önce bu bağlantıları kendi bilgilerinizle güncelleyin. */
+/** Uygulamanın web adresleri (docs/ klasörü sudoflame.com olarak yayınlanır). */
 object AppLinks {
-    /** docs/privacy_policy.html dosyasını GitHub Pages vb. bir yerde yayınlayıp adresini yazın. */
-    const val PRIVACY_URL = "https://example.com/sudoflame/privacy"
-    const val SUPPORT_EMAIL = "destek@example.com"
+    /** docs/privacy.html dosyası bu adreste yayınlanır. */
+    const val PRIVACY_URL = "https://sudoflame.com/privacy.html"
+    const val SUPPORT_EMAIL = "destek@sudoflame.com"
+    const val WEBSITE = "https://sudoflame.com"
 
     fun store(ctx: Context) = "https://play.google.com/store/apps/details?id=${ctx.packageName}"
 }
