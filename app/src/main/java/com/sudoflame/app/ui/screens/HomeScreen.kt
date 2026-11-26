@@ -152,6 +152,17 @@ fun HomeScreen(
                     }
                 }
 
+                // Ana eylemler: hemen seri kartının altında, kaydırmadan görünsün
+                Spacer(Modifier.height(14.dp))
+                ChunkyButton("YENİ OYUN", Modifier.fillMaxWidth(), height = 60.dp, icon = Icons.Rounded.Add) { showDifficulty = true }
+                // Devam et
+                if (hasSaved) {
+                    Spacer(Modifier.height(12.dp))
+                    ChunkyButton("OYUNA DEVAM ET", Modifier.fillMaxWidth(), icon = Icons.Rounded.PlayArrow, color = Brand.Mint, shadow = Color(0xFF0B8F6E)) {
+                        onPlay("resume", Difficulty.EASY)
+                    }
+                }
+
                 // Söndürülen seriyi kurtar
                 if (p.canRepairStreak) {
                     Spacer(Modifier.height(12.dp))
@@ -167,14 +178,6 @@ fun HomeScreen(
                                 }
                             }
                         }
-                    }
-                }
-
-                // Devam et
-                if (hasSaved) {
-                    Spacer(Modifier.height(12.dp))
-                    ChunkyButton("OYUNA DEVAM ET", Modifier.fillMaxWidth(), icon = Icons.Rounded.PlayArrow, color = Brand.Mint, shadow = Color(0xFF0B8F6E)) {
-                        onPlay("resume", Difficulty.EASY)
                     }
                 }
 
@@ -241,8 +244,6 @@ fun HomeScreen(
                         }
                     }
                 }
-                Spacer(Modifier.height(16.dp))
-                ChunkyButton("YENİ OYUN", Modifier.fillMaxWidth(), height = 60.dp, icon = Icons.Rounded.Add) { showDifficulty = true }
                 Spacer(Modifier.height(20.dp))
             }
             BannerAd()
