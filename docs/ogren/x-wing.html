@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>X-Wing Sudoku Tekniği: Adım Adım Anlatım | SudoFlame</title>
+<meta name="description" content="X-Wing sudoku tekniği: tek bir rakamın iki satırda dikdörtgen oluşturduğu kalıbı bul ve sütunlardan aday sil. Uzman seviyesi için animasyonlu anlatım.">
+<link rel="canonical" href="https://sudoflame.com/ogren/x-wing.html">
+<meta property="og:type" content="article"><meta property="og:site_name" content="SudoFlame"><meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="X-Wing Sudoku Tekniği: Adım Adım Anlatım | SudoFlame"><meta property="og:description" content="X-Wing sudoku tekniği: tek bir rakamın iki satırda dikdörtgen oluşturduğu kalıbı bul ve sütunlardan aday sil. Uzman seviyesi için animasyonlu anlatım."><meta property="og:url" content="https://sudoflame.com/ogren/x-wing.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Article", "headline": "X-Wing tekniği", "description": "X-Wing sudoku tekniği: tek bir rakamın iki satırda dikdörtgen oluşturduğu kalıbı bul ve sütunlardan aday sil. Uzman seviyesi için animasyonlu anlatım.", "inLanguage": "tr", "url": "https://sudoflame.com/ogren/x-wing.html", "datePublished": "2026-11-26", "dateModified": "2026-11-26", "author": {"@type": "Organization", "name": "SudoFlame", "url": "https://sudoflame.com/"}, "publisher": {"@type": "Organization", "name": "SudoFlame", "url": "https://sudoflame.com/"}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SudoFlame", "item": "https://sudoflame.com/"}, {"@type": "ListItem", "position": 2, "name": "Sudoku Öğren", "item": "https://sudoflame.com/ogren/"}, {"@type": "ListItem", "position": 3, "name": "X-Wing", "item": "https://sudoflame.com/ogren/x-wing.html"}]}]</script>
+</head>
+<body>
+<header class="top"><nav><a class="logo" href="/">🔥 SudoFlame</a><a href="/ogren/">Sudoku Öğren</a><a href="/ogren/sss.html">SSS</a></nav></header>
+<main>
+<p class="crumbs"><a href="/">SudoFlame</a> › <a href="/ogren/">Sudoku Öğren</a></p>
+<h1>X-Wing tekniği</h1> <span class="level">Uzman</span>
+<p class="lead">X-Wing, uzman seviyesindeki bulmacalarda sık karşılaşılan, tek bir rakama odaklanan bir tekniktir. Adını, tahtada oluşturduğu dikdörtgenin köşelerini çaprazlama birleştiren “X” şeklinden alır.</p>
+<h2>Kalıp nedir?</h2>
+<p>Bir rakam düşün; örneğimizde 6. Şu koşullar sağlanıyorsa bir X-Wing var demektir:</p>
+<ul>
+<li>İki farklı satırın her birinde 6 sadece iki hücrede aday olarak bulunuyor.</li>
+<li>Bu iki satırdaki adaylar aynı iki sütunda yer alıyor.</li>
+</ul>
+<p>Bu dört hücre bir dikdörtgenin köşeleridir. 1. satırdaki 6 ya soldaki ya da sağdaki köşeye gelecek. Soldakine gelirse, aynı sütuna bir 6 daha konamayacağı için 7. satırdaki 6 sağdaki köşeye gitmek zorunda. Sağdakine gelirse tam tersi olur. Her iki durumda da iki sütunun 6’ları bu dört köşenin ikisinde yer alır.</p>
+<figure class="demo" data-label="X-Wing tekniği animasyonu"><script type="application/json">{"givens":".9..43.5.7.6.513.953...9....1.59.673365..7.9497.36....129.75.3...39......57.3.9.2","digit":6,"steps":[{"t":"X-Wing tek bir rakama odaklanır. Tahtada yalnızca <b>6</b> rakamının adaylarını gösterdik.","marks":{"3":[6],"8":[6],"21":[6],"25":[6],"26":[6],"57":[6],"62":[6],"63":[6],"68":[6],"70":[6],"71":[6],"72":[6],"75":[6],"77":[6],"79":[6]},"ring":[11,33,37,49]},{"t":"<b>1. satırda</b> 6 sadece iki hücrede aday: 4. ve 9. sütunlar.","unit":[0,1,2,3,4,5,6,7,8],"hi":{"3":[6],"8":[6]}},{"t":"<b>7. satırda</b> da 6 sadece iki hücrede aday ve bunlar da aynı iki sütunda.","unit":[54,55,56,57,58,59,60,61,62],"hi":{"62":[6],"57":[6]}},{"t":"Bu dört hücre bir dikdörtgen oluşturur. İki satırın 6’leri ya sol üst ile sağ alta ya da sağ üst ile sol alta gelir. İki durumda da 4. ve 9. sütunların 6’leri bu köşelerde olur.","hi":{"3":[6],"8":[6],"62":[6],"57":[6]},"rect":[3,8,62,57]},{"t":"Bu yüzden 4. ve 9. sütunların diğer hücrelerinde 6 olamaz.","unit":[3,12,21,30,39,48,57,66,75,8,17,26,35,44,53,62,71,80],"hi":{"3":[6],"8":[6],"62":[6],"57":[6]},"rect":[3,8,62,57],"strike":{"21":[6],"26":[6],"71":[6],"75":[6]}},{"t":"Dört adayı tek hamlede sildik. Bu, sütunlara bakarak da aynı şekilde uygulanabilir.","rect":[3,8,62,57],"remove":{"21":[6],"26":[6],"71":[6],"75":[6]}}]}</script><noscript><p class="muted">Animasyonu görmek için JavaScript’i açın.</p></noscript></figure>
+<h2>Sonuç: sütunlardan eleme</h2>
+<p>İki sütunun 6’sı köşelerde olacağına göre, bu sütunların diğer hücrelerinde 6 bulunamaz. Örnekteki dört aday bu yüzden tek hamlede silinir.</p>
+<p>Kalıp tersten de kurulabilir: iki sütunda bir rakam sadece iki hücrede aday olarak bulunuyor ve bu hücreler aynı iki satırdaysa, o iki satırın diğer hücrelerinden aynı rakam silinir.</p>
+<h2>X-Wing nasıl aranır?</h2>
+<ol>
+<li>Bir rakam seç ve tahtadaki o rakamın adaylarına odaklan. Diğer rakamları görmezden gel.</li>
+<li>O rakamın sadece iki kez aday olduğu satırları bul.</li>
+<li>Bu satırlardan ikisinin adayları aynı sütunlardaysa X-Wing’i buldun.</li>
+<li>Bu iki sütunda, X-Wing satırları dışında kalan hücrelerden o rakamı sil.</li>
+</ol>
+<div class="tip"><p><strong>Önce basit teknikler:</strong> X-Wing aramak zaman alır. Önce <a href="acik-cift.html">açık çift</a>, <a href="gizli-cift.html">gizli çift</a> ve <a href="isaret-eden-cift.html">işaret eden çift</a> gibi daha kolay kalıpları kontrol et; X-Wing’e ancak bunlar işe yaramadığında başvur.</p></div>
+<h2>Daha büyük kardeşleri</h2>
+<p>Aynı fikir üç satır ve üç sütuna genişletildiğinde <strong>Swordfish</strong>, dört satır ve dört sütuna genişletildiğinde <strong>Jellyfish</strong> adı verilen teknikler ortaya çıkar. Mantık aynıdır: bir rakamın birkaç satırdaki bütün adayları aynı sayıda sütunun içinde kalıyorsa, o sütunların geri kalanından bu rakam silinebilir.</p>
+<nav class="nextprev" aria-label="Rehber gezinme"><a href="isaret-eden-cift.html"><small>← Önceki</small>İşaret eden çift</a></nav>
+<footer><a href="/">SudoFlame</a> · <a href="/ogren/">Sudoku Öğren</a> · <a href="/privacy.html">Gizlilik Politikası</a> · <a href="mailto:info@sudoflame.com">info@sudoflame.com</a><br>© 2026 SudoFlame. Bu sayfadaki metin ve görseller özgündür.</footer>
+</main>
+<script src="/assets/demo.js" defer></script>
+</body></html>
