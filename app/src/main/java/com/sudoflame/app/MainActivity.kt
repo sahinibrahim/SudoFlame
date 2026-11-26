@@ -1,5 +1,15 @@
 package com.sudoflame.app
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material3.Icon
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.CalendarMonth
+import androidx.compose.material.icons.rounded.Group
+import androidx.compose.material.icons.rounded.Person
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.layout.size
 import android.Manifest
 import android.os.Build
 import android.os.Bundle
@@ -83,13 +93,13 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-private data class Tab(val route: String, val emoji: String, val label: String)
+private data class Tab(val route: String, val icon: ImageVector, val label: String)
 
 private val tabs = listOf(
-    Tab("home", "🏠", "Ana Sayfa"),
-    Tab("daily", "📅", "Günlük"),
-    Tab("friends", "🤝", "Arkadaşlar"),
-    Tab("me", "😎", "Ben"),
+    Tab("home", Icons.Rounded.Home, "Ana Sayfa"),
+    Tab("daily", Icons.Rounded.CalendarMonth, "Günlük"),
+    Tab("friends", Icons.Rounded.Group, "Arkadaşlar"),
+    Tab("me", Icons.Rounded.Person, "Ben"),
 )
 
 @Composable
@@ -172,7 +182,14 @@ private fun BottomBar(current: String, onSelect: (String) -> Unit) {
                         .padding(vertical = 4.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text(t.emoji, fontSize = 24.sp, modifier = Modifier.scale(s).graphicsLayer { alpha = if (sel) 1f else 0.55f })
+                    Box(
+                        Modifier.scale(s).clip(RoundedCornerShape(50))
+                            .background(if (sel) Brand.Violet.copy(alpha = 0.14f) else Color.Transparent)
+                            .padding(horizontal = 18.dp, vertical = 4.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(t.icon, contentDescription = t.label, tint = if (sel) Brand.Violet else c.subtext, modifier = Modifier.size(24.dp))
+                    }
                     Text(
                         t.label, fontSize = 12.sp, fontWeight = if (sel) FontWeight.Black else FontWeight.SemiBold,
                         color = if (sel) Brand.Violet else c.subtext

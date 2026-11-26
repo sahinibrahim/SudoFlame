@@ -1,5 +1,9 @@
 package com.sudoflame.app.ui.screens
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.SmartDisplay
+import androidx.compose.material.icons.rounded.PlayArrow
+import androidx.compose.material.icons.rounded.Add
 import android.widget.Toast
 import androidx.activity.compose.LocalActivity
 import androidx.compose.foundation.background
@@ -156,7 +160,7 @@ fun HomeScreen(
                             Text("😢 ${p.lostStreak} günlük serin söndü!", fontWeight = FontWeight.Black, color = Brand.Night, fontSize = 18.sp)
                             Text("Sadece bugün: kısa bir reklam izle, serini geri getir.", color = Brand.Night)
                             Spacer(Modifier.height(10.dp))
-                            ChunkyButton("📺  Seriyi Kurtar", Modifier.fillMaxWidth(), color = Brand.Night, shadow = Color.Black) {
+                            ChunkyButton("Seriyi Kurtar", Modifier.fillMaxWidth(), icon = Icons.Rounded.SmartDisplay, color = Brand.Night, shadow = Color.Black) {
                                 rewarded {
                                     ProgressRepository.repairStreak()
                                     Toast.makeText(ctx, "🔥 Serin geri geldi!", Toast.LENGTH_SHORT).show()
@@ -169,7 +173,7 @@ fun HomeScreen(
                 // Devam et
                 if (hasSaved) {
                     Spacer(Modifier.height(12.dp))
-                    ChunkyButton("▶  OYUNA DEVAM ET", Modifier.fillMaxWidth(), color = Brand.Mint, shadow = Color(0xFF0B8F6E)) {
+                    ChunkyButton("OYUNA DEVAM ET", Modifier.fillMaxWidth(), icon = Icons.Rounded.PlayArrow, color = Brand.Mint, shadow = Color(0xFF0B8F6E)) {
                         onPlay("resume", Difficulty.EASY)
                     }
                 }
@@ -238,7 +242,7 @@ fun HomeScreen(
                     }
                 }
                 Spacer(Modifier.height(16.dp))
-                ChunkyButton("YENİ OYUN", Modifier.fillMaxWidth(), height = 60.dp) { showDifficulty = true }
+                ChunkyButton("YENİ OYUN", Modifier.fillMaxWidth(), height = 60.dp, icon = Icons.Rounded.Add) { showDifficulty = true }
                 Spacer(Modifier.height(20.dp))
             }
             BannerAd()
@@ -262,7 +266,7 @@ fun HomeScreen(
                 )
                 Spacer(Modifier.height(16.dp))
                 if (p.freezes < 3) {
-                    ChunkyButton("📺  Reklam izle, +1 dondurucu", Modifier.fillMaxWidth(), color = Brand.Sky, shadow = Color(0xFF2268C9)) {
+                    ChunkyButton("Reklam izle, +1 dondurucu", Modifier.fillMaxWidth(), icon = Icons.Rounded.SmartDisplay, color = Brand.Sky, shadow = Color(0xFF2268C9)) {
                         rewarded {
                             ProgressRepository.addFreeze()
                             showFreezeInfo = false

@@ -6,7 +6,7 @@ import android.content.Context
 object AppLinks {
     /** docs/privacy.html dosyası bu adreste yayınlanır. */
     const val PRIVACY_URL = "https://sudoflame.com/privacy.html"
-    const val SUPPORT_EMAIL = "destek@sudoflame.com"
+    const val SUPPORT_EMAIL = "info@sudoflame.com"
     const val WEBSITE = "https://sudoflame.com"
 
     fun store(ctx: Context) = "https://play.google.com/store/apps/details?id=${ctx.packageName}"

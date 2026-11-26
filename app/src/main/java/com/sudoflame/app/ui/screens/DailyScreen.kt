@@ -1,5 +1,9 @@
 package com.sudoflame.app.ui.screens
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material3.Icon
+import androidx.compose.material.icons.rounded.ChevronLeft
+import androidx.compose.material.icons.rounded.ChevronRight
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -97,15 +101,15 @@ fun DailyScreen(onPlayDay: (Long) -> Unit) {
 
             Column(Modifier.padding(16.dp)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("‹", fontSize = 34.sp, color = c.text, modifier = Modifier.clickable { month = month.minusMonths(1) }.padding(horizontal = 12.dp))
+                    Icon(Icons.Rounded.ChevronLeft, contentDescription = "Önceki ay", tint = c.text, modifier = Modifier.clickable { month = month.minusMonths(1) }.padding(horizontal = 8.dp).size(32.dp))
                     Text(
                         "${month.month.getDisplayName(TextStyle.FULL, tr).replaceFirstChar { it.uppercase() }} ${month.year}",
                         Modifier.weight(1f), color = c.text, fontWeight = FontWeight.Black, fontSize = 20.sp,
                         textAlign = androidx.compose.ui.text.style.TextAlign.Center
                     )
                     val canNext = month < YearMonth.now()
-                    Text("›", fontSize = 34.sp, color = if (canNext) c.text else c.line,
-                        modifier = Modifier.clickable(enabled = canNext) { month = month.plusMonths(1) }.padding(horizontal = 12.dp))
+                    Icon(Icons.Rounded.ChevronRight, contentDescription = "Sonraki ay", tint = if (canNext) c.text else c.line,
+                        modifier = Modifier.clickable(enabled = canNext) { month = month.plusMonths(1) }.padding(horizontal = 8.dp).size(32.dp))
                 }
                 Spacer(Modifier.height(8.dp))
                 Row(Modifier.fillMaxWidth()) {
