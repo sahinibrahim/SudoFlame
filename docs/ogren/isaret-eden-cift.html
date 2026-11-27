@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>İşaret Eden Çift (Pointing Pair) ve Kutu-Satır Eleme | SudoFlame</title>
+<meta name="description" content="Pointing pair ve box-line reduction sudoku teknikleri: bir kutudaki adaylar tek bir satır ya da sütunda toplanınca nasıl eleme yapılır? Animasyonlu anlatım.">
+<link rel="canonical" href="https://sudoflame.com/ogren/isaret-eden-cift.html">
+<meta property="og:type" content="article"><meta property="og:site_name" content="SudoFlame"><meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="İşaret Eden Çift (Pointing Pair) ve Kutu-Satır Eleme | SudoFlame"><meta property="og:description" content="Pointing pair ve box-line reduction sudoku teknikleri: bir kutudaki adaylar tek bir satır ya da sütunda toplanınca nasıl eleme yapılır? Animasyonlu anlatım."><meta property="og:url" content="https://sudoflame.com/ogren/isaret-eden-cift.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Article", "headline": "İşaret eden çift ve kutu-satır eleme", "description": "Pointing pair ve box-line reduction sudoku teknikleri: bir kutudaki adaylar tek bir satır ya da sütunda toplanınca nasıl eleme yapılır? Animasyonlu anlatım.", "inLanguage": "tr", "url": "https://sudoflame.com/ogren/isaret-eden-cift.html", "datePublished": "2026-11-26", "dateModified": "2026-11-26", "author": {"@type": "Organization", "name": "SudoFlame", "url": "https://sudoflame.com/"}, "publisher": {"@type": "Organization", "name": "SudoFlame", "url": "https://sudoflame.com/"}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SudoFlame", "item": "https://sudoflame.com/"}, {"@type": "ListItem", "position": 2, "name": "Sudoku Öğren", "item": "https://sudoflame.com/ogren/"}, {"@type": "ListItem", "position": 3, "name": "İşaret eden çift", "item": "https://sudoflame.com/ogren/isaret-eden-cift.html"}]}]</script>
+</head>
+<body>
+<header class="top"><nav><a class="logo" href="/">🔥 SudoFlame</a><a href="/ogren/">Sudoku Öğren</a><a href="/ogren/sss.html">SSS</a></nav></header>
+<main>
+<p class="crumbs"><a href="/">SudoFlame</a> › <a href="/ogren/">Sudoku Öğren</a></p>
+<h1>İşaret eden çift ve kutu-satır eleme</h1> <span class="level">Zor</span>
+<p class="lead">Bu teknik, kutularla satır ya da sütunlar arasındaki etkileşimi kullanır. Bir kutuda bir rakamın adayları tek bir satırda (veya sütunda) toplanmışsa, bu adaylar o satırın kutu dışındaki kısmını “işaret eder” ve oradaki aynı adayları siler.</p>
+<h2>Mantığı</h2>
+<p>Her kutuda her rakam bir kez bulunmak zorunda. Eğer bir kutuda 4’ün adayları sadece 3. sütundaki iki hücredeyse, kutunun 4’ü kesinlikle 3. sütunda olacak. 3. sütunda da sadece bir tane 4 olabileceği için, sütunun bu kutu dışında kalan hücrelerinde 4 olamaz.</p>
+<figure class="demo" data-label="İşaret eden çift tekniği animasyonu"><script type="application/json">{"givens":"...4...31.7.31...213....6....1.3.......1..9...2....813.9.5..148865241379417983265","steps":[{"t":"1. kutu ile 3. sütunun adaylarını yazdık.","unit":[0,1,2,9,10,11,18,19,20,2,11,20,29,38,47,56,65,74],"marks":{"0":[2,5,6,9],"1":[5,8],"2":[2,6,8,9],"9":[5,6,9],"11":[4,6,8,9],"20":[2,4,8,9],"38":[3,4,6,8],"47":[4,6,9],"56":[2,3]}},{"t":"1. kutu içinde <b>4</b> yalnızca iki hücrede aday ve ikisi de 3. sütunda.","unit":[0,1,2,9,10,11,18,19,20],"hi":{"11":[4],"20":[4]},"target":[11,20]},{"t":"Kutudaki 4 bu iki hücreden birine gelecek. Hangisi olursa olsun 3. sütunun 4’ü bu kutuda olacak. Bu yüzden sütunun geri kalanında 4 olamaz.","unit":[2,11,20,29,38,47,56,65,74],"hi":{"11":[4],"20":[4]},"target":[11,20],"strike":{"38":[4],"47":[4]}},{"t":"Sütunun aşağısındaki iki hücreden 4 adayını siliyoruz.","unit":[2,11,20,29,38,47,56,65,74],"remove":{"38":[4],"47":[4]},"target":[38,47]}]}</script><noscript><p class="muted">Animasyonu görmek için JavaScript’i açın.</p></noscript></figure>
+<h2>İki yönlü kullanım</h2>
+<h3>1. İşaret eden çift (kutudan çizgiye)</h3>
+<p>Bir rakamın kutudaki adayları tek bir satırda ya da sütunda toplanmışsa, o satırın ya da sütunun kutu dışındaki hücrelerinden bu rakam silinir. Adaylar iki hücredeyse “çift”, üç hücredeyse “üçlü” diye anılır; mantık aynıdır.</p>
+<h3>2. Kutu-satır eleme (çizgiden kutuya)</h3>
+<p>Tersi de geçerlidir. Bir satırda bir rakamın bütün adayları aynı kutunun içinde kalıyorsa, satırın o rakamı kesin olarak o kutuda olacaktır. Bu durumda kutunun diğer satırlarındaki aynı adaylar silinebilir. İngilizce kaynaklarda <em>box-line reduction</em> ya da <em>claiming</em> olarak geçer.</p>
+<div class="tip"><p><strong>Nasıl fark edilir?</strong> Notlarına bakarken bir rakamı seç ve her kutuda o rakamın adaylarının düz bir çizgi oluşturup oluşturmadığına bak. SudoFlame’de dolu bir hücreye dokunduğunda tahtadaki aynı rakamlar vurgulanır; bu, rakamın dağılımını görmeyi kolaylaştırır.</p></div>
+<h2>Kısa özet</h2>
+<ul>
+<li>Kutudaki adaylar tek bir çizgide toplanıyorsa, çizginin kutu dışındaki kısmından sil.</li>
+<li>Çizgideki adaylar tek bir kutuda toplanıyorsa, kutunun çizgi dışındaki kısmından sil.</li>
+<li>Bu teknik genellikle zor seviyedeki bulmacaların kilidini açan ilk ileri tekniktir.</li>
+</ul>
+<nav class="nextprev" aria-label="Rehber gezinme"><a href="gizli-cift.html"><small>← Önceki</small>Gizli çift</a><a class="n" href="x-wing.html"><small>Sonraki →</small>X-Wing</a></nav>
+<footer><a href="/">SudoFlame</a> · <a href="/ogren/">Sudoku Öğren</a> · <a href="/privacy.html">Gizlilik Politikası</a> · <a href="mailto:info@sudoflame.com">info@sudoflame.com</a><br>© 2026 SudoFlame. Bu sayfadaki metin ve görseller özgündür.</footer>
+</main>
+<script src="/assets/demo.js" defer></script>
+</body></html>

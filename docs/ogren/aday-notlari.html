@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sudoku’da Aday Notları (Kalem İşaretleri) Nasıl Alınır? | SudoFlame</title>
+<meta name="description" content="Sudoku’da aday notları nasıl alınır, ne zaman kullanılır ve nasıl güncel tutulur? Orta ve zor bulmacalar için temel beceriyi animasyonla öğren.">
+<link rel="canonical" href="https://sudoflame.com/ogren/aday-notlari.html">
+<meta property="og:type" content="article"><meta property="og:site_name" content="SudoFlame"><meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Sudoku’da Aday Notları (Kalem İşaretleri) Nasıl Alınır? | SudoFlame"><meta property="og:description" content="Sudoku’da aday notları nasıl alınır, ne zaman kullanılır ve nasıl güncel tutulur? Orta ve zor bulmacalar için temel beceriyi animasyonla öğren."><meta property="og:url" content="https://sudoflame.com/ogren/aday-notlari.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Article", "headline": "Aday notları: kalem işaretleri", "description": "Sudoku’da aday notları nasıl alınır, ne zaman kullanılır ve nasıl güncel tutulur? Orta ve zor bulmacalar için temel beceriyi animasyonla öğren.", "inLanguage": "tr", "url": "https://sudoflame.com/ogren/aday-notlari.html", "datePublished": "2026-11-26", "dateModified": "2026-11-26", "author": {"@type": "Organization", "name": "SudoFlame", "url": "https://sudoflame.com/"}, "publisher": {"@type": "Organization", "name": "SudoFlame", "url": "https://sudoflame.com/"}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SudoFlame", "item": "https://sudoflame.com/"}, {"@type": "ListItem", "position": 2, "name": "Sudoku Öğren", "item": "https://sudoflame.com/ogren/"}, {"@type": "ListItem", "position": 3, "name": "Aday notları", "item": "https://sudoflame.com/ogren/aday-notlari.html"}]}]</script>
+</head>
+<body>
+<header class="top"><nav><a class="logo" href="/">🔥 SudoFlame</a><a href="/ogren/">Sudoku Öğren</a><a href="/ogren/sss.html">SSS</a></nav></header>
+<main>
+<p class="crumbs"><a href="/">SudoFlame</a> › <a href="/ogren/">Sudoku Öğren</a></p>
+<h1>Aday notları: kalem işaretleri</h1> <span class="level">Orta</span>
+<p class="lead">Kolay bulmacalarda rakamları kafanda tutabilirsin. Zorluk arttıkça bu imkânsızlaşır. Aday notları, her boş hücreye gelebilecek rakamları küçük küçük yazarak düşünmeyi kâğıda (ya da ekrana) aktarmaktır.</p>
+<h2>Aday nedir?</h2>
+<p>Bir hücrenin <strong>adayları</strong>, o hücrenin satırında, sütununda ve kutusunda henüz bulunmayan rakamlardır. Yani o anki bilgilerle hücreye yazılabilecek her rakam bir adaydır. Notlar, bu adayları hücrenin içine küçük rakamlarla yazmaktır.</p>
+<figure class="demo" data-label="Aday notları animasyonu"><script type="application/json">{"givens":".1.8.........2..4...9..62.1.......6..9.24..8.....81...4...5.8..83......5.2......7","steps":[{"t":"Kalem notları, bir hücreye gelebilecek bütün rakamları küçük küçük yazmaktır. 6. kutu ile başlayalım.","unit":[33,34,35,42,43,44,51,52,53]},{"t":"Her boş hücre için satırını, sütununu ve kutusunu kontrol edip olası rakamları not ediyoruz.","unit":[33,34,35,42,43,44,51,52,53],"marks":{"33":[1,3,4,5,7,9],"35":[2,3,4,9],"42":[1,3,5,7],"44":[3],"51":[3,4,5,7,9],"52":[2,3,5,7,9],"53":[2,3,4,9]}},{"t":"Notlara bakınca <b>5. satır, 9. sütun</b> hücresinde tek aday kaldığı hemen görülüyor: 3.","unit":[33,34,35,42,43,44,51,52,53],"target":[44],"hi":{"44":[3]}},{"t":"3’ü yerleştiriyoruz. Aynı kutudaki notlarda 3 artık geçersiz.","target":[44],"place":{"44":3},"strike":{"33":[3],"35":[3],"42":[3],"51":[3],"52":[3],"53":[3]},"unit":[33,34,35,42,43,44,51,52,53]},{"t":"Notları temizledik. Her yerleştirmeden sonra notları güncellemek, yeni tek adayları kolayca fark etmeni sağlar.","remove":{"33":[3],"35":[3],"42":[3],"51":[3],"52":[3],"53":[3]},"unit":[33,34,35,42,43,44,51,52,53]}]}</script><noscript><p class="muted">Animasyonu görmek için JavaScript’i açın.</p></noscript></figure>
+<h2>Notları nasıl alırsın?</h2>
+<ol>
+<li><strong>Önce kolay hamleleri bitir.</strong> Tek aday ve gizli tekli ile ilerleyebildiğin kadar ilerle. Not almak zaman alır; ne kadar az boş hücre kalırsa o kadar iyi.</li>
+<li><strong>Rakam rakam ilerle.</strong> Hücre hücre not almak yerine, önce bütün tahta için 1’in gidebileceği yerleri işaretle, sonra 2’yi, sonra 3’ü. Bu yöntem daha hızlıdır ve daha az hata yaptırır.</li>
+<li><strong>Notları sabit konumda yaz.</strong> 1’i hücrenin sol üst köşesine, 5’i ortasına, 9’u sağ alt köşesine yazarsan notları bir bakışta okursun. SudoFlame’de notlar otomatik olarak bu düzende gösterilir.</li>
+</ol>
+<h2>Notları güncel tut</h2>
+<p>Notların asıl gücü, güncel tutulduklarında ortaya çıkar. Bir hücreye rakam yazdığında, aynı satır, sütun ve kutudaki bütün notlardan o rakamı sil. Bu küçük alışkanlık, sana yeni <a href="tek-aday.html">tek adayları</a> anında gösterir. SudoFlame’de ayarlardaki “Notları otomatik temizle” seçeneği bu işi senin yerine yapar.</p>
+<div class="tip"><p><strong>Unutma:</strong> Eski bir not, yanlış bir rakam kadar tehlikelidir. Notlarında “olmaması gereken” bir aday kalırsa, ileri tekniklerde yanlış sonuçlara varabilirsin.</p></div>
+<h2>Notlar hangi teknikleri açar?</h2>
+<p>Aday notları, ileri tekniklerin temelidir. Notlar olmadan <a href="acik-cift.html">açık çift</a>, <a href="gizli-cift.html">gizli çift</a>, <a href="isaret-eden-cift.html">işaret eden çift</a> ve <a href="x-wing.html">X-Wing</a> gibi kalıpları görmek neredeyse imkânsızdır. Bu tekniklerin hepsi aslında aynı şeyi yapar: rakam yerleştirmez, notlardan aday siler. Silinen her aday, seni bir sonraki tek adaya yaklaştırır.</p>
+<nav class="nextprev" aria-label="Rehber gezinme"><a href="gizli-tekli.html"><small>← Önceki</small>Gizli tekli</a><a class="n" href="acik-cift.html"><small>Sonraki →</small>Açık çift</a></nav>
+<footer><a href="/">SudoFlame</a> · <a href="/ogren/">Sudoku Öğren</a> · <a href="/privacy.html">Gizlilik Politikası</a> · <a href="mailto:info@sudoflame.com">info@sudoflame.com</a><br>© 2026 SudoFlame. Bu sayfadaki metin ve görseller özgündür.</footer>
+</main>
+<script src="/assets/demo.js" defer></script>
+</body></html>
