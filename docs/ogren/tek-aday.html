@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tek Aday (Naked Single) Tekniği | Sudoku Öğren | SudoFlame</title>
+<meta name="description" content="Sudoku’nun en temel tekniği tek aday (naked single): bir hücreye gelebilecek tek rakamı adım adım animasyonla nasıl bulacağını öğren.">
+<link rel="canonical" href="https://sudoflame.com/ogren/tek-aday.html">
+<meta property="og:type" content="article"><meta property="og:site_name" content="SudoFlame"><meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Tek Aday (Naked Single) Tekniği | Sudoku Öğren | SudoFlame"><meta property="og:description" content="Sudoku’nun en temel tekniği tek aday (naked single): bir hücreye gelebilecek tek rakamı adım adım animasyonla nasıl bulacağını öğren."><meta property="og:url" content="https://sudoflame.com/ogren/tek-aday.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Article", "headline": "Tek aday tekniği", "description": "Sudoku’nun en temel tekniği tek aday (naked single): bir hücreye gelebilecek tek rakamı adım adım animasyonla nasıl bulacağını öğren.", "inLanguage": "tr", "url": "https://sudoflame.com/ogren/tek-aday.html", "datePublished": "2026-11-26", "dateModified": "2026-11-26", "author": {"@type": "Organization", "name": "SudoFlame", "url": "https://sudoflame.com/"}, "publisher": {"@type": "Organization", "name": "SudoFlame", "url": "https://sudoflame.com/"}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SudoFlame", "item": "https://sudoflame.com/"}, {"@type": "ListItem", "position": 2, "name": "Sudoku Öğren", "item": "https://sudoflame.com/ogren/"}, {"@type": "ListItem", "position": 3, "name": "Tek aday", "item": "https://sudoflame.com/ogren/tek-aday.html"}]}]</script>
+</head>
+<body>
+<header class="top"><nav><a class="logo" href="/">🔥 SudoFlame</a><a href="/ogren/">Sudoku Öğren</a><a href="/ogren/sss.html">SSS</a></nav></header>
+<main>
+<p class="crumbs"><a href="/">SudoFlame</a> › <a href="/ogren/">Sudoku Öğren</a></p>
+<h1>Tek aday tekniği</h1> <span class="level">Başlangıç</span>
+<p class="lead">Tek aday, bir hücreye bakıp “buraya hangi rakamlar gelemez?” sorusunu sorduğun tekniktir. Elenmeyen tek rakam kalıyorsa, o hücrenin cevabını buldun demektir. İngilizce kaynaklarda <em>naked single</em> olarak geçer.</p>
+<h2>Nasıl çalışır?</h2>
+<p>Her hücre üç birime aittir: bir satır, bir sütun ve bir kutu. Bu üç birimde zaten bulunan rakamlar o hücreye yazılamaz. Üç birimdeki farklı rakamların sayısı 8’e ulaştığında, 1–9 arasından sadece bir rakam açıkta kalır.</p>
+<figure class="demo" data-label="Tek aday tekniği animasyonu"><script type="application/json">{"givens":".1.8.........2..4...9..62.1.......6..9.24..8.....81...4...5.8..83......5.2......7","steps":[{"t":"Vurgulanan hücreye bakalım: <b>5. satır, 9. sütun</b>. Buraya hangi rakam gelebilir?","target":[44]},{"t":"Aynı satırda 2, 4, 8 ve 9 zaten var. Bunlar buraya yazılamaz.","target":[44],"unit":[36,37,38,39,40,41,42,43,44],"ring":[37,39,40,43]},{"t":"Aynı sütunda ayrıca 1, 5 ve 7 var.","target":[44],"unit":[8,17,26,35,44,53,62,71,80],"ring":[26,71,80]},{"t":"Kutunun içinde de 6 var.","target":[44],"unit":[33,34,35,42,43,44,51,52,53],"ring":[34,43]},{"t":"1–9 arasından elenmeyen tek rakam <b>3</b>. Bu hücrenin tek adayı 3 olduğu için gönül rahatlığıyla yazabiliriz.","target":[44],"place":{"44":3}}]}</script><noscript><p class="muted">Animasyonu görmek için JavaScript’i açın.</p></noscript></figure>
+<h2>Adım adım</h2>
+<ol>
+<li>Boş bir hücre seç. Başlangıçta, dolu hücrelerle çevrili olanlar en iyi adaylardır.</li>
+<li>Hücrenin satırındaki rakamları zihninde işaretle.</li>
+<li>Sütundaki rakamları ekle. Daha önce saydığın rakamları tekrar sayma.</li>
+<li>Kutudaki rakamları ekle.</li>
+<li>1’den 9’a kadar say ve eksik olanı bul. Tek bir rakam eksikse, onu yaz.</li>
+</ol>
+<div class="tip"><p><strong>Pratik ipucu:</strong> Rakamları saymak yerine 1’den 9’a kadar sırayla “1 var mı? 2 var mı?” diye sormak hatayı azaltır. Böylece hiçbir rakamı atlamazsın.</p></div>
+<h2>Ne zaman işe yarar?</h2>
+<p>Tek aday, özellikle bulmacanın ilerleyen aşamalarında, tahta dolmaya başladığında çok etkilidir. Her yerleştirdiğin rakam, komşu hücrelerin aday sayısını azaltır ve yeni tek adaylar ortaya çıkar. Bulmacanın sonuna doğru neredeyse her hücre bir tek adaya dönüşür.</p>
+<p>Başlangıçta ise hücrelerin çoğunda birden fazla aday olur. O zaman bakış açını değiştirip hücre yerine rakama odaklanmak daha hızlıdır. Bunun adı <a href="gizli-tekli.html">gizli tekli</a> ve bir sonraki derste anlatılıyor.</p>
+<h2>Kısa özet</h2>
+<ul>
+<li>Bir hücrenin satır, sütun ve kutusundaki rakamları ele.</li>
+<li>Geriye tek rakam kalırsa o hücrenin cevabıdır.</li>
+<li>Her yerleştirmeden sonra çevredeki hücreleri yeniden kontrol et; yeni tek adaylar çıkmış olabilir.</li>
+</ul>
+<nav class="nextprev" aria-label="Rehber gezinme"><a href="sudoku-nasil-oynanir.html"><small>← Önceki</small>Sudoku nasıl oynanır?</a><a class="n" href="gizli-tekli.html"><small>Sonraki →</small>Gizli tekli</a></nav>
+<footer><a href="/">SudoFlame</a> · <a href="/ogren/">Sudoku Öğren</a> · <a href="/privacy.html">Gizlilik Politikası</a> · <a href="mailto:info@sudoflame.com">info@sudoflame.com</a><br>© 2026 SudoFlame. Bu sayfadaki metin ve görseller özgündür.</footer>
+</main>
+<script src="/assets/demo.js" defer></script>
+</body></html>

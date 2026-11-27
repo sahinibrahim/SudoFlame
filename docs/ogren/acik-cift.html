@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Açık Çift (Naked Pair) Tekniği | Sudoku Öğren | SudoFlame</title>
+<meta name="description" content="Açık çift (naked pair) sudoku tekniği: aynı iki adaya sahip iki hücreyle bir birimdeki diğer adayları nasıl sileceğini animasyonla öğren.">
+<link rel="canonical" href="https://sudoflame.com/ogren/acik-cift.html">
+<meta property="og:type" content="article"><meta property="og:site_name" content="SudoFlame"><meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Açık Çift (Naked Pair) Tekniği | Sudoku Öğren | SudoFlame"><meta property="og:description" content="Açık çift (naked pair) sudoku tekniği: aynı iki adaya sahip iki hücreyle bir birimdeki diğer adayları nasıl sileceğini animasyonla öğren."><meta property="og:url" content="https://sudoflame.com/ogren/acik-cift.html">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Article", "headline": "Açık çift tekniği", "description": "Açık çift (naked pair) sudoku tekniği: aynı iki adaya sahip iki hücreyle bir birimdeki diğer adayları nasıl sileceğini animasyonla öğren.", "inLanguage": "tr", "url": "https://sudoflame.com/ogren/acik-cift.html", "datePublished": "2026-11-26", "dateModified": "2026-11-26", "author": {"@type": "Organization", "name": "SudoFlame", "url": "https://sudoflame.com/"}, "publisher": {"@type": "Organization", "name": "SudoFlame", "url": "https://sudoflame.com/"}}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "SudoFlame", "item": "https://sudoflame.com/"}, {"@type": "ListItem", "position": 2, "name": "Sudoku Öğren", "item": "https://sudoflame.com/ogren/"}, {"@type": "ListItem", "position": 3, "name": "Açık çift", "item": "https://sudoflame.com/ogren/acik-cift.html"}]}]</script>
+</head>
+<body>
+<header class="top"><nav><a class="logo" href="/">🔥 SudoFlame</a><a href="/ogren/">Sudoku Öğren</a><a href="/ogren/sss.html">SSS</a></nav></header>
+<main>
+<p class="crumbs"><a href="/">SudoFlame</a> › <a href="/ogren/">Sudoku Öğren</a></p>
+<h1>Açık çift tekniği</h1> <span class="level">Orta</span>
+<p class="lead">Basit yöntemler tükendiğinde ilk başvuracağın tekniklerden biri açık çifttir. Bir birimdeki iki hücrede sadece aynı iki aday varsa, bu iki rakam o hücrelere “rezerve” edilmiştir ve birimdeki diğer hücrelerden silinebilir. İngilizce adı <em>naked pair</em>.</p>
+<h2>Mantığı</h2>
+<p>Bir satırda iki hücrenin adaylarının ikisi de {3, 6} olsun. Bu hücrelerden biri 3, diğeri 6 olacak. Hangisinin hangisi olduğunu henüz bilmiyoruz ama bunun önemi yok: 3 ve 6 bu satırda zaten bu iki hücrede kullanılacak. Dolayısıyla satırın başka hiçbir hücresi 3 ya da 6 olamaz.</p>
+<figure class="demo" data-label="Açık çift tekniği animasyonu"><script type="application/json">{"givens":".5.8.2..18.21.6...1.457328..81257.4....4.9812429.18...21.7.4.9..7.9...2.948.2..7.","steps":[{"t":"Oyunun ortasındayız ve basit yöntemler tükendi. <b>5. satırın</b> adaylarını yazalım.","unit":[36,37,38,39,40,41,42,43,44],"marks":{"36":[3,5,6,7],"37":[3,6],"38":[3,5,6,7],"40":[3,6]}},{"t":"İki hücrede yalnızca aynı iki aday var: <b>3 ve 6</b>.","unit":[36,37,38,39,40,41,42,43,44],"target":[37,40],"hi":{"37":[3,6],"40":[3,6]}},{"t":"Bu iki rakam bu iki hücreye bir şekilde paylaştırılacak. Hangisinin nereye gideceğini bilmesek de satırın başka hiçbir hücresine 3 ya da 6 gelemez.","unit":[36,37,38,39,40,41,42,43,44],"target":[37,40],"hi":{"37":[3,6],"40":[3,6]},"strike":{"36":[3,6],"38":[3,6]}},{"t":"Satırdaki diğer notlardan bu rakamları siliyoruz. Artık bu hücrelerde daha az aday var ve bulmaca yeniden ilerleyebilir.","unit":[36,37,38,39,40,41,42,43,44],"remove":{"36":[3,6],"38":[3,6]},"target":[36,38]}]}</script><noscript><p class="muted">Animasyonu görmek için JavaScript’i açın.</p></noscript></figure>
+<h2>Nasıl bulunur?</h2>
+<ol>
+<li><a href="aday-notlari.html">Aday notlarını</a> eksiksiz ve güncel tut.</li>
+<li>Sadece iki adayı olan hücreleri ara.</li>
+<li>Aynı birimde (satır, sütun ya da kutu) aynı iki adaya sahip başka bir hücre var mı, bak.</li>
+<li>Varsa, birimdeki diğer hücrelerin notlarından bu iki rakamı sil.</li>
+</ol>
+<div class="tip"><p><strong>Çifte kazanç:</strong> İki hücre aynı satırda ve aynı kutudaysa, eleme hem satıra hem de kutuya uygulanır. Bu durumu fark etmek çok sayıda aday siler.</p></div>
+<h2>Üçlü ve dörtlüler</h2>
+<p>Aynı mantık daha büyük gruplara da genişler. Bir birimde üç hücrenin adaylarının toplamı sadece üç farklı rakamdan oluşuyorsa (örneğin {1, 4}, {4, 7} ve {1, 7}), bu üç rakam o hücrelere aittir ve birimin geri kalanından silinebilir. Buna <strong>açık üçlü</strong> denir. Her hücrede üç rakamın hepsinin bulunması gerekmez; önemli olan, üç hücrenin birlikte en fazla üç farklı aday içermesidir.</p>
+<h2>Kısa özet</h2>
+<ul>
+<li>Aynı birimde, aynı iki adaya sahip iki hücre ara.</li>
+<li>Bu iki rakamı birimdeki diğer hücrelerden sil.</li>
+<li>Açık çift rakam yerleştirmez, adayları azaltır; ardından yeni tek adaylar ve gizli tekliler aramayı unutma.</li>
+</ul>
+<nav class="nextprev" aria-label="Rehber gezinme"><a href="aday-notlari.html"><small>← Önceki</small>Aday notları</a><a class="n" href="gizli-cift.html"><small>Sonraki →</small>Gizli çift</a></nav>
+<footer><a href="/">SudoFlame</a> · <a href="/ogren/">Sudoku Öğren</a> · <a href="/privacy.html">Gizlilik Politikası</a> · <a href="mailto:info@sudoflame.com">info@sudoflame.com</a><br>© 2026 SudoFlame. Bu sayfadaki metin ve görseller özgündür.</footer>
+</main>
+<script src="/assets/demo.js" defer></script>
+</body></html>
