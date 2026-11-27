@@ -1,0 +1,4 @@
+# SudoFlame ads.txt
+# AdSense onaylanınca aşağıdaki satırın başındaki "# " kaldırılıp
+# pub-XXXXXXXXXXXXXXXX yerine kendi yayıncı kimliğiniz yazılacak.
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

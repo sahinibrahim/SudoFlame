@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Günlük Sudoku – Her Gün Yeni Bulmaca, Ücretsiz Oyna | SudoFlame</title>
+<meta name="description" content="Her gün yeni bir sudoku bulmacası. Üyelik ve indirme gerekmeden tarayıcında ücretsiz oyna, not al, ipucu kullan ve serini büyüt.">
+<link rel="canonical" href="https://sudoflame.com/gunluk/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="SudoFlame"><meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Günlük Sudoku | SudoFlame"><meta property="og:description" content="Her gün yeni bir sudoku. Tarayıcında ücretsiz oyna, serini büyüt."><meta property="og:url" content="https://sudoflame.com/gunluk/">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"SudoFlame Günlük Sudoku","url":"https://sudoflame.com/gunluk/","applicationCategory":"GameApplication","operatingSystem":"Web","inLanguage":"tr","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"}}</script>
+</head>
+<body>
+<header class="top"><nav><a class="logo" href="/">🔥 SudoFlame</a><a href="/gunluk/" aria-current="page">Günlük Sudoku</a><a href="/ogren/">Sudoku Öğren</a><a href="/ogren/sss.html">SSS</a></nav></header>
+<main class="wide">
+<h1>Günlük Sudoku</h1>
+<p class="lead">Her gün herkes aynı bulmacayı çözer. SudoFlame uygulamasındaki günün bulmacasıyla aynıdır. İlerlemen bu tarayıcıda saklanır, sayfayı kapatıp sonra devam edebilirsin.</p>
+
+<section id="daily" class="sf" aria-label="Günlük sudoku oyunu">
+  <div class="sf-head">
+    <button type="button" class="sf-arrow" data-prev aria-label="Önceki gün">‹</button>
+    <div class="sf-day"><strong data-date>…</strong><span class="level" data-diff></span></div>
+    <button type="button" class="sf-arrow" data-next aria-label="Sonraki gün">›</button>
+  </div>
+  <div class="sf-stats"><span>⏱ <b data-time>0:00</b></span><span>❌ Hata: <b data-mist>0</b></span><span>🔥 Seri: <b data-streak>0</b></span></div>
+  <div class="sf-board" role="grid" aria-label="Sudoku tahtası. Ok tuşlarıyla gez, rakam tuşlarıyla yaz."></div>
+  <div class="sf-tools">
+    <button type="button" data-act="undo">↶<span>Geri al</span></button>
+    <button type="button" data-act="erase">⌫<span>Sil</span></button>
+    <button type="button" data-act="note" aria-pressed="false">✎<span>Not</span></button>
+    <button type="button" data-act="hint">💡<span>İpucu</span></button>
+  </div>
+  <div class="sf-pad"></div>
+  <div class="sf-win card" hidden>
+    <h2>Tebrikler! 🎉</h2>
+    <p>Bulmacayı <b data-wtime></b> sürede çözdün. Hata: <b data-wmist></b> · İpucu: <b data-whint></b> · Seri: 🔥 <b data-wstreak></b> gün</p>
+    <p class="sf-winbtns"><button type="button" class="btn" data-act="share">Sonucu paylaş</button> <button type="button" class="btn ghost" data-act="reset">Baştan oyna</button></p>
+    <p class="muted">Yarın yeni bulmaca seni bekliyor. Seriyi telefonunda da sürdürmek ve arkadaşlarınla ortak seri yapmak için <a href="/">SudoFlame uygulamasına</a> göz at.</p>
+  </div>
+  <noscript><p class="muted">Oyunu oynamak için JavaScript’i açın.</p></noscript>
+</section>
+
+<h2>Nasıl oynanır?</h2>
+<p>Bir hücreye dokun, ardından alttaki rakamlardan birini seç. Her satıra, her sütuna ve her 3×3 kutuya 1’den 9’a kadar rakamları birer kez yerleştir. Yanlış rakamlar kırmızı görünür. Rakamların altındaki küçük sayı, o rakamdan kaç tane kaldığını gösterir.</p>
+<ul>
+<li><b>Not:</b> Not modunu açınca hücreye küçük aday rakamlar yazarsın. Doğru rakamı yerleştirince aynı satır, sütun ve kutudaki o not kendiliğinden silinir.</li>
+<li><b>İpucu:</b> Seçili hücrenin (seçili değilse ilk boş hücrenin) doğru rakamını yazar.</li>
+<li><b>Klavye:</b> Ok tuşlarıyla gez, 1–9 ile yaz, Delete ile sil, N ile not modunu aç, Ctrl+Z ile geri al.</li>
+<li><b>Geçmiş günler:</b> Üstteki oklarla son 30 günün bulmacalarını da çözebilirsin.</li>
+</ul>
+<p>Zorluk haftanın gününe göre değişir: üç gün kolay, iki gün orta, bir gün zor. Takıldığında <a href="/ogren/">Sudoku Öğren</a> bölümündeki animasyonlu dersler yardımcı olur. Önce <a href="/ogren/tek-aday.html">tek aday</a> ve <a href="/ogren/gizli-tekli.html">gizli tekli</a> tekniklerine bak.</p>
+
+<div class="ad-slot" data-slot="daily" hidden><span>Reklam</span></div>
+
+<footer><a href="/">SudoFlame</a> · <a href="/ogren/">Sudoku Öğren</a> · <a href="/privacy.html">Gizlilik Politikası</a> · <a href="mailto:info@sudoflame.com">info@sudoflame.com</a><br>© 2026 SudoFlame</footer>
+</main>
+<script src="/assets/sudoku-gen.js"></script>
+<script src="/assets/daily.js"></script>
+<script src="/assets/ads.js" defer></script>
+</body></html>
