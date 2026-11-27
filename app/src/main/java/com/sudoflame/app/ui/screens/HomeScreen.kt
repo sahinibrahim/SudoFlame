@@ -1,5 +1,9 @@
 package com.sudoflame.app.ui.screens
 
+import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.rounded.Group
+import androidx.compose.material3.Icon
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.SmartDisplay
 import androidx.compose.material.icons.rounded.PlayArrow
@@ -186,17 +190,23 @@ fun HomeScreen(
                     val today = java.time.LocalDate.now()
                     val doneToday = Today.epochDay() in p.dailyDone
                     MiniCard(
-                        Modifier.weight(1f), Brand.skyBrush, "📅", "GÜNÜN BULMACASI",
+                        Modifier.weight(1f), Brand.skyBrush, "GÜNÜN BULMACASI",
                         "${today.dayOfMonth} ${today.month.getDisplayName(TextStyle.FULL, Locale("tr"))}",
-                        if (doneToday) "Tamamlandı ⭐" else "Oyna", onDaily
-                    )
+                        if (doneToday) "Tamamlandı" else "Oyna",
+                        actionIcon = if (doneToday) Icons.Rounded.Star else null, onClick = onDaily,
+                    ) {
+                        // Bugünün gününü gösteren takvim rozeti (emoji sabit "17" gösteriyordu)
+                        Text("${today.dayOfMonth}", color = Color.White, fontWeight = FontWeight.Black, fontSize = 22.sp)
+                    }
                     val fCount = (friends as? FriendState.Ready)?.friends
                     val best = fCount?.maxOfOrNull { it.streak } ?: 0
                     MiniCard(
-                        Modifier.weight(1f), Brand.mintBrush, "🤝", "ARKADAŞ SERİSİ",
+                        Modifier.weight(1f), Brand.mintBrush, "ARKADAŞ SERİSİ",
                         if (fCount.isNullOrEmpty()) "Arkadaş ekle" else "${fCount.size} arkadaş · 🔥$best",
-                        "Aç", onFriends
-                    )
+                        "Aç", onClick = onFriends,
+                    ) {
+                        Icon(Icons.Rounded.Group, contentDescription = null, tint = Color.White, modifier = Modifier.size(28.dp))
+                    }
                 }
 
                 // Günlük görevler
@@ -280,18 +290,31 @@ fun HomeScreen(
 }
 
 @Composable
-private fun MiniCard(modifier: Modifier, brush: Brush, emoji: String, label: String, title: String, action: String, onClick: () -> Unit) {
+private fun MiniCard(
+    modifier: Modifier, brush: Brush, label: String, title: String, action: String,
+    actionIcon: ImageVector? = null, onClick: () -> Unit, badge: @Composable () -> Unit,
+) {
     AppCard(modifier.clickable(onClick = onClick), brush = brush) {
         Column(Modifier.padding(16.dp).fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(emoji, fontSize = 34.sp)
-            Spacer(Modifier.height(4.dp))
-            Text(label, color = Color.White.copy(alpha = 0.85f), fontSize = 11.sp, fontWeight = FontWeight.Black)
+            Box(
+                Modifier.size(46.dp).clip(RoundedCornerShape(14.dp)).background(Color(0x33FFFFFF)),
+                contentAlignment = Alignment.Center
+            ) { badge() }
+            Spacer(Modifier.height(8.dp))
+            Text(label, color = Color.White.copy(alpha = 0.85f), fontSize = 11.sp, fontWeight = FontWeight.Black, maxLines = 1)
             Text(title, color = Color.White, fontWeight = FontWeight.Black, fontSize = 16.sp, textAlign = TextAlign.Center, maxLines = 1)
             Spacer(Modifier.height(10.dp))
-            Text(
-                action, color = Color.White, fontWeight = FontWeight.Black,
-                modifier = Modifier.clip(RoundedCornerShape(50)).background(Color(0x40FFFFFF)).padding(horizontal = 18.dp, vertical = 6.dp)
-            )
+            // Sabit yükseklikli tek satır buton: metin uzasa da kart boyu değişmez
+            Row(
+                Modifier.height(34.dp).clip(RoundedCornerShape(50)).background(Color(0x40FFFFFF)).padding(horizontal = 16.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(action, color = Color.White, fontWeight = FontWeight.Black, maxLines = 1, softWrap = false)
+                if (actionIcon != null) {
+                    Spacer(Modifier.width(4.dp))
+                    Icon(actionIcon, contentDescription = null, tint = Brand.Sun, modifier = Modifier.size(18.dp))
+                }
+            }
         }
     }
 }
