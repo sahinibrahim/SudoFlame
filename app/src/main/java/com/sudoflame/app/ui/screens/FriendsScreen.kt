@@ -1,5 +1,7 @@
 package com.sudoflame.app.ui.screens
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.PersonAdd
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -109,7 +111,7 @@ fun FriendsScreen() {
                                 Text(s.myCode, color = Color.White, fontWeight = FontWeight.Black, fontSize = 40.sp, letterSpacing = 6.sp,
                                     modifier = Modifier.clickable { copy(ctx, s.myCode) })
                                 Spacer(Modifier.height(10.dp))
-                                ChunkyButton("📨  Arkadaşını Davet Et", Modifier.fillMaxWidth(), color = Color.White, shadow = Color(0xFFBFEFE2), textColor = Color(0xFF0B8F6E)) {
+                                ChunkyButton("Arkadaşını Davet Et", Modifier.fillMaxWidth(), icon = Icons.Rounded.PersonAdd, color = Color.White, shadow = Color(0xFFBFEFE2), textColor = Color(0xFF0B8F6E)) {
                                     invite(ctx, s.myCode)
                                 }
                             }

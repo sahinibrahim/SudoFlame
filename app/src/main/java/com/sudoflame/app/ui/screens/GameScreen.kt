@@ -1,5 +1,16 @@
 package com.sudoflame.app.ui.screens
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material3.Icon
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.automirrored.rounded.Undo
+import androidx.compose.material.icons.automirrored.rounded.Backspace
+import androidx.compose.material.icons.rounded.PlayArrow
+import androidx.compose.material.icons.rounded.Pause
+import androidx.compose.material.icons.rounded.EditNote
+import androidx.compose.material.icons.rounded.Lightbulb
+import androidx.compose.material.icons.rounded.SmartDisplay
 import android.content.Intent
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
@@ -104,12 +115,12 @@ fun GameScreen(vm: GameViewModel, onExit: () -> Unit, onNewGame: () -> Unit) {
                 Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                RoundIcon("←") { onExit() }
+                RoundIcon(Icons.AutoMirrored.Rounded.ArrowBack) { onExit() }
                 Column(Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
                     Text("PUAN", color = c.subtext, fontSize = 11.sp, fontWeight = FontWeight.Black)
                     Text("${s.liveScore}", color = c.text, fontWeight = FontWeight.Black, fontSize = 26.sp)
                 }
-                RoundIcon(if (userPaused) "▶" else "❚❚") { userPaused = !userPaused; vm.setPaused(userPaused) }
+                RoundIcon(if (userPaused) Icons.Rounded.PlayArrow else Icons.Rounded.Pause) { userPaused = !userPaused; vm.setPaused(userPaused) }
             }
             // Bilgi satırı
             Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)) {
@@ -153,10 +164,10 @@ fun GameScreen(vm: GameViewModel, onExit: () -> Unit, onNewGame: () -> Unit) {
                 Spacer(Modifier.height(14.dp))
                 // Araçlar
                 Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp), horizontalArrangement = Arrangement.SpaceEvenly) {
-                    ToolButton("↩️", "Geri Al") { vm.undo() }
-                    ToolButton("🧽", "Sil") { vm.erase() }
-                    ToolButton("✏️", "Not", badge = if (s.noteMode) "AÇIK" else "KAPALI", active = s.noteMode) { vm.toggleNotes() }
-                    ToolButton("💡", "İpucu", badge = if (s.hintsLeft > 0) "${s.hintsLeft}" else "📺") {
+                    ToolButton(Icons.AutoMirrored.Rounded.Undo, "Geri Al") { vm.undo() }
+                    ToolButton(Icons.AutoMirrored.Rounded.Backspace, "Sil") { vm.erase() }
+                    ToolButton(Icons.Rounded.EditNote, "Not", badge = if (s.noteMode) "AÇIK" else "KAPALI", active = s.noteMode) { vm.toggleNotes() }
+                    ToolButton(Icons.Rounded.Lightbulb, "İpucu", badge = if (s.hintsLeft > 0) "${s.hintsLeft}" else "+1") {
                         if (!vm.hint()) rewarded { vm.addHintFromAd(); vm.hint() }
                     }
                 }
@@ -194,12 +205,12 @@ fun GameScreen(vm: GameViewModel, onExit: () -> Unit, onNewGame: () -> Unit) {
 }
 
 @Composable
-private fun RoundIcon(text: String, onClick: () -> Unit) {
+private fun RoundIcon(icon: ImageVector, onClick: () -> Unit) {
     val c = LocalAppColors.current
     Box(
         Modifier.size(44.dp).clip(CircleShape).background(c.card).border(2.dp, c.line, CircleShape).clickable(onClick = onClick),
         contentAlignment = Alignment.Center
-    ) { Text(text, fontSize = 18.sp, color = c.text, fontWeight = FontWeight.Black) }
+    ) { Icon(icon, contentDescription = null, tint = c.text, modifier = Modifier.size(24.dp)) }
 }
 
 @Composable
@@ -293,7 +304,7 @@ private fun Cell(s: GameState, i: Int, bg: Color, modifier: Modifier, onClick: (
 }
 
 @Composable
-private fun ToolButton(emoji: String, label: String, badge: String? = null, active: Boolean = false, onClick: () -> Unit) {
+private fun ToolButton(icon: ImageVector, label: String, badge: String? = null, active: Boolean = false, onClick: () -> Unit) {
     val c = LocalAppColors.current
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.clickable(onClick = onClick)) {
         Box {
@@ -302,7 +313,7 @@ private fun ToolButton(emoji: String, label: String, badge: String? = null, acti
                     .background(if (active) Brand.Violet.copy(alpha = 0.18f) else c.card)
                     .border(2.dp, if (active) Brand.Violet else c.line, RoundedCornerShape(18.dp)),
                 contentAlignment = Alignment.Center
-            ) { Text(emoji, fontSize = 24.sp) }
+            ) { Icon(icon, contentDescription = label, tint = if (active) Brand.Violet else c.text, modifier = Modifier.size(26.dp)) }
             if (badge != null) {
                 Text(
                     badge, fontSize = 9.sp, color = Color.White, fontWeight = FontWeight.Black,
@@ -353,7 +364,7 @@ private fun LostDialog(canSecondChance: Boolean, onAd: () -> Unit, onNew: () -> 
                 Text("Pes etme, çok yaklaşmıştın.", color = LocalAppColors.current.subtext, textAlign = TextAlign.Center)
                 Spacer(Modifier.height(20.dp))
                 if (canSecondChance) {
-                    ChunkyButton("📺  Reklam izle, +1 can", Modifier.fillMaxWidth(), color = Brand.Flame, shadow = Color(0xFFC9520A), onClick = onAd)
+                    ChunkyButton("Reklam izle, +1 can", Modifier.fillMaxWidth(), icon = Icons.Rounded.SmartDisplay, color = Brand.Flame, shadow = Color(0xFFC9520A), onClick = onAd)
                     Spacer(Modifier.height(10.dp))
                 }
                 ChunkyButton("Yeni Oyun", Modifier.fillMaxWidth(), onClick = onNew)

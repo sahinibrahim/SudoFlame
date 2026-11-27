@@ -1,5 +1,22 @@
 package com.sudoflame.app.ui.screens
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material3.Icon
+import androidx.compose.ui.graphics.vector.ImageVector
+import com.sudoflame.app.ui.IconBubble
+import androidx.compose.material.icons.automirrored.rounded.MenuBook
+import androidx.compose.material.icons.automirrored.rounded.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.rounded.ArrowBack
+import androidx.compose.material.icons.rounded.EmojiEvents
+import androidx.compose.material.icons.rounded.BarChart
+import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material.icons.rounded.School
+import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.Shield
+import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.Block
+import androidx.compose.material.icons.rounded.Restore
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
@@ -58,7 +75,6 @@ import com.sudoflame.app.data.ProgressRepository
 import com.sudoflame.app.game.Difficulty
 import com.sudoflame.app.ui.AppCard
 import com.sudoflame.app.ui.ChunkyButton
-import com.sudoflame.app.ui.EmojiBubble
 import com.sudoflame.app.ui.ProgressBar
 import com.sudoflame.app.ui.formatTime
 import com.sudoflame.app.ui.theme.Brand
@@ -117,38 +133,38 @@ private fun ProfileMain(open: (Sub) -> Unit) {
         Spacer(Modifier.height(12.dp))
         val unlocked = Achievements.unlocked(p).size
         MenuGroup {
-            MenuItem("🏅", Brand.sunsetBrush, "Başarılar", "$unlocked/${Achievements.all.size}") { open(Sub.ACHIEVEMENTS) }
-            MenuItem("📊", Brand.skyBrush, "İstatistikler") { open(Sub.STATS) }
+            MenuItem(Icons.Rounded.EmojiEvents, Brand.sunsetBrush, "Başarılar", "$unlocked/${Achievements.all.size}") { open(Sub.ACHIEVEMENTS) }
+            MenuItem(Icons.Rounded.BarChart, Brand.skyBrush, "İstatistikler") { open(Sub.STATS) }
         }
         Spacer(Modifier.height(12.dp))
         MenuGroup {
-            MenuItem("⚙️", Brush.linearGradient(listOf(Color(0xFFFF6B6B), Color(0xFFE63946))), "Ayarlar") { open(Sub.SETTINGS) }
-            MenuItem("🎓", Brand.sunsetBrush, "Nasıl Oynanır") { open(Sub.HOWTO) }
-            MenuItem("📖", Brand.mintBrush, "Kurallar") { open(Sub.RULES) }
+            MenuItem(Icons.Rounded.Settings, Brush.linearGradient(listOf(Color(0xFFFF6B6B), Color(0xFFE63946))), "Ayarlar") { open(Sub.SETTINGS) }
+            MenuItem(Icons.Rounded.School, Brand.sunsetBrush, "Nasıl Oynanır") { open(Sub.HOWTO) }
+            MenuItem(Icons.AutoMirrored.Rounded.MenuBook, Brand.mintBrush, "Kurallar") { open(Sub.RULES) }
         }
         Spacer(Modifier.height(12.dp))
         MenuGroup {
-            MenuItem("🔒", Brand.violetBrush, "Gizlilik Politikası") {
+            MenuItem(Icons.Rounded.Lock, Brand.violetBrush, "Gizlilik Politikası") {
                 ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(PRIVACY_URL)))
             }
             if (AdsManager.privacyOptionsRequired) {
-                MenuItem("🛡️", Brand.skyBrush, "Gizlilik Tercihleri") { activity?.let { AdsManager.showPrivacyOptions(it) } }
+                MenuItem(Icons.Rounded.Shield, Brand.skyBrush, "Gizlilik Tercihleri") { activity?.let { AdsManager.showPrivacyOptions(it) } }
             }
-            MenuItem("⭐", Brand.sunsetBrush, "Bizi Değerlendir") {
+            MenuItem(Icons.Rounded.Star, Brand.sunsetBrush, "Bizi Değerlendir") {
                 ctx.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(AppLinks.store(ctx))))
             }
-            MenuItem("ℹ️", Brand.skyBrush, "Hakkında") { open(Sub.ABOUT) }
+            MenuItem(Icons.Rounded.Info, Brand.skyBrush, "Hakkında") { open(Sub.ABOUT) }
         }
         Spacer(Modifier.height(12.dp))
         if (!p.adsRemoved) {
             MenuGroup {
-                MenuItem("🚫", Brush.linearGradient(listOf(Color(0xFFFF5F6D), Color(0xFFC81D4E))), "Reklamları Kaldır", price ?: "") {
+                MenuItem(Icons.Rounded.Block, Brush.linearGradient(listOf(Color(0xFFFF5F6D), Color(0xFFC81D4E))), "Reklamları Kaldır", price ?: "") {
                     val a = activity ?: return@MenuItem
                     if (!BillingManager.buyRemoveAds(a)) {
                         Toast.makeText(ctx, "Mağaza şu an kullanılamıyor. Biraz sonra tekrar dene.", Toast.LENGTH_SHORT).show()
                     }
                 }
-                MenuItem("♻️", Brand.mintBrush, "Satın Alımı Geri Yükle") {
+                MenuItem(Icons.Rounded.Restore, Brand.mintBrush, "Satın Alımı Geri Yükle") {
                     BillingManager.restore()
                     Toast.makeText(ctx, "Kontrol ediliyor…", Toast.LENGTH_SHORT).show()
                 }
@@ -179,17 +195,18 @@ private fun MenuGroup(content: @Composable () -> Unit) {
 }
 
 @Composable
-private fun MenuItem(emoji: String, brush: Brush, title: String, trailing: String = "", onClick: () -> Unit) {
+private fun MenuItem(icon: ImageVector, brush: Brush, title: String, trailing: String = "", onClick: () -> Unit) {
     val c = LocalAppColors.current
     Row(
         Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 14.dp, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        EmojiBubble(emoji, brush, 42.dp)
+        IconBubble(icon, brush, 42.dp)
         Spacer(Modifier.width(14.dp))
         Text(title, Modifier.weight(1f), fontSize = 17.sp, fontWeight = FontWeight.Bold, color = c.text)
         if (trailing.isNotEmpty()) Text(trailing, color = c.subtext, fontWeight = FontWeight.Bold)
-        Text("  ›", fontSize = 24.sp, color = c.subtext)
+        Spacer(Modifier.width(4.dp))
+        Icon(Icons.AutoMirrored.Rounded.KeyboardArrowRight, contentDescription = null, tint = c.subtext, modifier = Modifier.size(24.dp))
     }
 }
 
@@ -201,7 +218,7 @@ private fun SubPage(title: String, onBack: () -> Unit, content: @Composable () -
             Box(
                 Modifier.size(44.dp).clip(CircleShape).background(c.card).border(2.dp, c.line, CircleShape).clickable(onClick = onBack),
                 contentAlignment = Alignment.Center
-            ) { Text("←", fontSize = 22.sp, color = c.text, fontWeight = FontWeight.Black) }
+            ) { Icon(Icons.AutoMirrored.Rounded.ArrowBack, contentDescription = "Geri", tint = c.text, modifier = Modifier.size(24.dp)) }
             Spacer(Modifier.width(12.dp))
             Text(title, fontSize = 22.sp, fontWeight = FontWeight.Black, color = c.text)
         }

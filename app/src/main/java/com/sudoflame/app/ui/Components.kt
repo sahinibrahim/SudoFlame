@@ -1,5 +1,7 @@
 package com.sudoflame.app.ui
 
+import androidx.compose.material3.Icon
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -64,6 +66,7 @@ fun ChunkyButton(
     textColor: Color = Color.White,
     enabled: Boolean = true,
     height: Dp = 56.dp,
+    icon: ImageVector? = null,
     onClick: () -> Unit,
 ) {
     val src = remember { MutableInteractionSource() }
@@ -85,7 +88,13 @@ fun ChunkyButton(
                 .clip(RoundedCornerShape(18.dp)).background(c),
             contentAlignment = Alignment.Center
         ) {
-            Text(text, color = textColor, fontWeight = FontWeight.ExtraBold, fontSize = 17.sp, letterSpacing = 0.5.sp)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                if (icon != null) {
+                    Icon(icon, contentDescription = null, tint = textColor, modifier = Modifier.size(22.dp))
+                    Spacer(Modifier.width(8.dp))
+                }
+                Text(text, color = textColor, fontWeight = FontWeight.ExtraBold, fontSize = 17.sp, letterSpacing = 0.5.sp)
+            }
         }
     }
 }
@@ -201,10 +210,11 @@ fun Confetti(modifier: Modifier = Modifier) {
     }
 }
 
+/** Degrade zeminli, yuvarlatılmış kare içinde beyaz vektör ikon. */
 @Composable
-fun EmojiBubble(emoji: String, brush: Brush, size: Dp = 52.dp) {
-    Box(Modifier.size(size).clip(RoundedCornerShape(16.dp)).background(brush), contentAlignment = Alignment.Center) {
-        Text(emoji, fontSize = (size.value * 0.45f).sp, textAlign = TextAlign.Center)
+fun IconBubble(icon: ImageVector, brush: Brush, size: Dp = 52.dp) {
+    Box(Modifier.size(size).clip(RoundedCornerShape(size * 0.32f)).background(brush), contentAlignment = Alignment.Center) {
+        Icon(icon, contentDescription = null, tint = Color.White, modifier = Modifier.size(size * 0.52f))
     }
 }
 
